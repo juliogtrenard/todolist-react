@@ -4,7 +4,7 @@ import { CardTarea } from "./CardTarea";
 import "./css/Todo.css";
 
 export const Todo = () => {
-    const { addTodo, state } = useTodoList();
+    const { addTodo, deleteTodo, state } = useTodoList();
 
     const handleTodo = (tareaNueva) => {
         const { id, tarea, descripcion, done, date } = tareaNueva;
@@ -29,7 +29,11 @@ export const Todo = () => {
                     <p>No hay tareas disponibles</p>
                 ) : (
                     state.map((tarea) => (
-                        <CardTarea key={tarea.id} tarea={tarea} />
+                        <CardTarea
+                            key={tarea.id}
+                            tarea={tarea}
+                            deleteTodo={deleteTodo}
+                        />
                     ))
                 )}
             </section>

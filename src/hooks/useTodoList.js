@@ -13,5 +13,18 @@ export const useTodoList = () => {
         dispatch(action);
     };
 
-    return { state, addTodo };
+    const deleteTodo = (id) => {
+        const action = {
+            type: "delete todo",
+            payload: id,
+        };
+
+        dispatch(action);
+    };
+
+    return {
+        state,
+        addTodo,
+        deleteTodo,
+    };
 };
