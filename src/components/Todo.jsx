@@ -4,7 +4,7 @@ import { CardTarea } from "./CardTarea";
 import "./css/Todo.css";
 
 export const Todo = () => {
-    const { addTodo, deleteTodo, state } = useTodoList();
+    const { addTodo, deleteTodo, toggleTodo, state } = useTodoList();
 
     const handleTodo = (tareaNueva) => {
         const { id, tarea, descripcion, done, date } = tareaNueva;
@@ -33,6 +33,7 @@ export const Todo = () => {
                             key={tarea.id}
                             tarea={tarea}
                             deleteTodo={deleteTodo}
+                            toggleTodo={toggleTodo}
                         />
                     ))
                 )}

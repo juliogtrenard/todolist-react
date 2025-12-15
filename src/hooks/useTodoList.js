@@ -1,8 +1,17 @@
-import { useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { todoListReducer } from "../reducers/todoListReducer";
 
+const init = () => {
+    const tareas = localStorage.getItem("tareas");
+    return tareas ? JSON.parse(tareas) : [];
+};
+
 export const useTodoList = () => {
-    const [state, dispatch] = useReducer(todoListReducer, []);
+    const [state, dispatch] = useReducer(todoListReducer, [], init);
+
+    useEffect(() => {
+        localStorage.setItem("tareas", JSON.stringify(state));
+    }, [state]);
 
     const addTodo = (newTodo) => {
         const action = {
@@ -22,9 +31,19 @@ export const useTodoList = () => {
         dispatch(action);
     };
 
+    const toggleTodo = (id) => {
+        const action = {
+            type: "toggle todo",
+            payload: id,
+        };
+
+        dispatch(action);
+    };
+
     return {
         state,
         addTodo,
         deleteTodo,
+        toggleTodo,
     };
 };

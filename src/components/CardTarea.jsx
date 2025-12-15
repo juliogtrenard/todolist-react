@@ -1,6 +1,6 @@
 import "./css/CardTarea.css";
 
-export const CardTarea = ({ tarea, deleteTodo }) => {
+export const CardTarea = ({ tarea, deleteTodo, toggleTodo }) => {
     return (
         <article className="card">
             <div>
@@ -11,15 +11,14 @@ export const CardTarea = ({ tarea, deleteTodo }) => {
                 </p>
             </div>
             <div>
-                {tarea ? (
-                    <button className="card__btnEstado pendiente">
-                        Pendiente
-                    </button>
-                ) : (
-                    <button className="card__btnEstado finalizada">
-                        Finalizada
-                    </button>
-                )}
+                <button
+                    onClick={() => toggleTodo(tarea.id)}
+                    className={`card__btnEstado ${
+                        tarea.done ? "finalizada" : "pendiente"
+                    }`}
+                >
+                    {tarea.done ? "Finalizada" : "Pendiente"}
+                </button>
                 <button
                     onClick={() => deleteTodo(tarea.id)}
                     className="card__btnEliminar"
