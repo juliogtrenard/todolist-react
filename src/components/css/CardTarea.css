@@ -1,0 +1,45 @@
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 2px solid rgb(195, 195, 195);
+    margin: 10px 0;
+    padding: 0 20px;
+    border-radius: var(--radius);
+}
+
+.card div {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    gap: 10px;
+}
+
+.card__btnEstado.pendiente {
+    background-color: var(--color-primary);
+    color: var(--color-text--secondary);
+    border-radius: var(--radius);
+    border-color: var(--color-secondary);
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.card__btnEstado.finalizada {
+    background-color: var(--color-secondary);
+    color: var(--color-text--secondary);
+    border-radius: var(--radius);
+    border-color: var(--color-secondary);
+    padding: 8px 12px;
+    cursor: pointer;
+}
+
+.card__btnEliminar {
+    background-color: var(--color-accent);
+    color: var(--color-text--secondary);
+    border-radius: var(--radius);
+    border-color: var(--color-secondary);
+    padding: 8px 12px;
+    cursor: pointer;
+}

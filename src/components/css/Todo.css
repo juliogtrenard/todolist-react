@@ -7,3 +7,7 @@
 .todo__titulo {
     text-align: center;
 }
+
+.todo__lista {
+    padding-bottom: 60px;
+}
