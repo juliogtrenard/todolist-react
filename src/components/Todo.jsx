@@ -7,37 +7,23 @@ export const Todo = () => {
     const { addTodo, deleteTodo, toggleTodo, state } = useTodoList();
 
     const handleTodo = (tareaNueva) => {
-        const { id, tarea, descripcion, done, date } = tareaNueva;
-
-        const newTodo = {
-            id,
-            tarea,
-            descripcion,
-            done,
-            date,
-        };
-
-        addTodo(newTodo);
+        addTodo(tareaNueva);
     };
 
     return (
         <main className="mainContainer">
             <h2 className="todo__titulo">Lista de tareas</h2>
             <Formulario handleTodo={handleTodo} />
-            <section className="todo__lista">
-                {state.length === 0 ? (
-                    <p>No hay tareas disponibles</p>
-                ) : (
-                    state.map((tarea) => (
-                        <CardTarea
-                            key={tarea.id}
-                            tarea={tarea}
-                            deleteTodo={deleteTodo}
-                            toggleTodo={toggleTodo}
-                        />
-                    ))
-                )}
-            </section>
+
+            {state.length === 0 ? (
+                <p>No hay tareas disponibles</p>
+            ) : (
+                <CardTarea
+                    tareas={state}
+                    deleteTodo={deleteTodo}
+                    toggleTodo={toggleTodo}
+                />
+            )}
         </main>
     );
 };
